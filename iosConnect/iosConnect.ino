@@ -44,6 +44,13 @@ void setup() {
   Serial.println(F("Program now starting\n"));
 
   ble.verbose(false);
+  
+  ble.println("AT+GAPDEVNAME");
+  ble.readline();
+
+  String bleName = ble.buffer;
+
+  Serial.println("BT DEVICE NAME: " + bleName);
 
   // Wait for connection
   while (!ble.isConnected())
